@@ -1,0 +1,767 @@
+:root {
+  --museum-red: #be1622;
+  --paper: #ffffff;
+  --ink: #000000;
+  --soft-ink: #3b3b3b;
+  --line: #e6e0dd;
+  --surface: #faf8f6;
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 18px 40px rgba(0, 0, 0, 0.14);
+  --radius: 8px;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.skip-link {
+  background: var(--museum-red);
+  color: var(--paper);
+  left: 1rem;
+  padding: 0.8rem 1rem;
+  position: fixed;
+  top: 1rem;
+  transform: translateY(-140%);
+  z-index: 20;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.app-shell {
+  margin: 0 auto;
+  max-width: 1760px;
+  padding: clamp(1.25rem, 2.6vw, 3.5rem);
+}
+
+.page-header {
+  align-items: center;
+  display: flex;
+  gap: clamp(2rem, 5vw, 5.5rem);
+  justify-content: flex-start;
+  padding: clamp(1rem, 2vw, 2rem) 0 clamp(1.25rem, 2.8vw, 3rem);
+  text-align: center;
+}
+
+.museum-logo {
+  flex: 0 0 auto;
+  height: auto;
+  max-width: clamp(92px, 13vw, 190px);
+  width: 100%;
+}
+
+.header-title-group {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.settings-button {
+  align-items: center;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  color: var(--museum-red);
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: 1.35rem;
+  font-weight: 900;
+  height: 52px;
+  justify-content: center;
+  width: 52px;
+}
+
+.settings-button:hover,
+.settings-button:focus-visible {
+  box-shadow: var(--shadow-hover);
+}
+
+.settings-panel {
+  margin: -1rem 0 1.5rem auto;
+  max-width: 360px;
+}
+
+.settings-panel-inner {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.settings-panel-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.settings-panel-header h2 {
+  color: var(--museum-red);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.settings-close {
+  background: var(--ink);
+  border: 0;
+  border-radius: 50%;
+  color: var(--paper);
+  font-size: 1.25rem;
+  height: 36px;
+  line-height: 1;
+  width: 36px;
+}
+
+.settings-toggle,
+.settings-field {
+  color: var(--soft-ink);
+  display: grid;
+  gap: 0.45rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.settings-toggle {
+  align-items: center;
+  grid-template-columns: 1fr auto;
+}
+
+.settings-toggle input {
+  accent-color: var(--museum-red);
+  height: 24px;
+  width: 24px;
+}
+
+.settings-field select {
+  background: #fff;
+  border: 2px solid #d9d2cf;
+  border-radius: var(--radius);
+  color: var(--ink);
+  min-height: 48px;
+  padding: 0.6rem 0.8rem;
+}
+
+.museum-label {
+  color: var(--soft-ink);
+  font-size: clamp(0.9rem, 1.1vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+}
+
+h1 {
+  color: var(--museum-red);
+  font-size: clamp(2.4rem, 5vw, 6.5rem);
+  line-height: 0.95;
+  margin: 0;
+}
+
+.title-counter {
+  color: var(--soft-ink);
+  font-size: clamp(1rem, 1.35vw, 1.45rem);
+  font-weight: 800;
+  margin: 0.7rem 0 0;
+}
+
+.filters-panel {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(1rem, 2vw, 1.75rem);
+}
+
+.search-row,
+.specific-filters {
+  display: grid;
+  gap: 1rem;
+}
+
+.specific-filters {
+  align-items: end;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.field-wide {
+  width: 100%;
+}
+
+.field span {
+  color: var(--soft-ink);
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.field input,
+.field select {
+  background: #fff;
+  border: 2px solid #d9d2cf;
+  border-radius: var(--radius);
+  color: var(--ink);
+  min-height: 58px;
+  outline: none;
+  padding: 0.9rem 1rem;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+  width: 100%;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: var(--museum-red);
+  box-shadow: 0 0 0 4px rgba(190, 22, 34, 0.16);
+}
+
+.alphabet-wrap {
+  display: flex;
+  gap: 0.55rem;
+  margin: 1.25rem 0;
+  overflow-x: auto;
+  padding: 0.15rem 0 0.65rem;
+  scrollbar-width: thin;
+}
+
+.alphabet-bar {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.letter-button,
+.reset-button {
+  border: 0;
+  border-radius: var(--radius);
+  font-weight: 900;
+  min-height: 54px;
+  min-width: 54px;
+  padding: 0 1rem;
+  transition:
+    background-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 120ms ease;
+  white-space: nowrap;
+}
+
+.letter-button {
+  background: #f0ecea;
+  color: var(--ink);
+}
+
+.letter-button[data-letter=""] {
+  min-width: max-content;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+}
+
+.letter-button:hover,
+.letter-button:focus-visible,
+.letter-button.is-active {
+  background: var(--museum-red);
+  color: var(--paper);
+}
+
+.letter-button:disabled {
+  background: #f5f2f0;
+  color: #9d9692;
+  cursor: not-allowed;
+  opacity: 0.62;
+}
+
+.letter-button:disabled:hover {
+  background: #f5f2f0;
+  box-shadow: none;
+  color: #9d9692;
+}
+
+.letter-button:active,
+.reset-button:active,
+.donor-card:active {
+  transform: scale(0.98);
+}
+
+.reset-button {
+  background: var(--museum-red);
+  color: var(--paper);
+  min-width: 180px;
+}
+
+.reset-button:hover,
+.reset-button:focus-visible {
+  box-shadow: 0 12px 26px rgba(190, 22, 34, 0.24);
+}
+
+.status-row {
+  align-items: center;
+  color: var(--soft-ink);
+  display: flex;
+  font-weight: 800;
+  justify-content: space-between;
+  min-height: 58px;
+  padding: 1.1rem 0 0.75rem;
+}
+
+.status-row p {
+  margin: 0;
+}
+
+#sourceStatus {
+  font-size: 0.92rem;
+  text-align: right;
+}
+
+.results-grid {
+  display: grid;
+  gap: clamp(0.8rem, 1.5vw, 1.35rem);
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.load-sentinel {
+  grid-column: 1 / -1;
+  min-height: 1px;
+}
+
+.donor-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+  display: grid;
+  min-height: 132px;
+  padding: 1.25rem;
+  text-align: left;
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease,
+    border-color 180ms ease;
+  width: 100%;
+}
+
+.donor-card:hover,
+.donor-card:focus-visible {
+  border-color: rgba(190, 22, 34, 0.4);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.donor-name {
+  align-self: end;
+  font-size: clamp(1.2rem, 1.6vw, 1.65rem);
+  font-weight: 900;
+  line-height: 1.14;
+}
+
+.donor-nickname {
+  color: var(--museum-red);
+  font-size: 1rem;
+  font-weight: 800;
+  margin-top: 0.6rem;
+}
+
+.empty-state,
+.error-state {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  grid-column: 1 / -1;
+  padding: 2rem;
+  text-align: center;
+}
+
+.detail-dialog {
+  border: 0;
+  border-radius: var(--radius);
+  max-width: min(1040px, calc(100vw - 2rem));
+  padding: 0;
+  width: 100%;
+}
+
+.detail-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.58);
+}
+
+.detail-shell {
+  background: var(--paper);
+  color: var(--ink);
+  max-height: min(86vh, 980px);
+  overflow: auto;
+  padding: clamp(1.2rem, 3vw, 2.4rem);
+  position: relative;
+}
+
+.close-button {
+  background: var(--ink);
+  border: 0;
+  border-radius: 50%;
+  color: var(--paper);
+  font-size: 2rem;
+  height: 52px;
+  line-height: 1;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  width: 52px;
+}
+
+.detail-title {
+  color: var(--museum-red);
+  font-size: clamp(2rem, 4vw, 4.5rem);
+  line-height: 1;
+  margin: 0 4rem 1.2rem 0;
+}
+
+.thank-you-box {
+  background: rgba(190, 22, 34, 0.06);
+  border: 1px solid rgba(190, 22, 34, 0.16);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 26px rgba(190, 22, 34, 0.08);
+  color: #631016;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.15rem, 1.7vw, 1.55rem);
+  font-style: italic;
+  line-height: 1.45;
+  margin: 0 0 1.6rem;
+  padding: clamp(1.1rem, 2.2vw, 1.7rem);
+}
+
+.detail-image {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: block;
+  height: auto;
+  margin: 0 auto 1.5rem;
+  max-height: 58vh;
+  max-width: 100%;
+  object-fit: contain;
+  width: auto;
+}
+
+.detail-list {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+}
+
+.detail-row {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 0.35rem;
+  grid-template-columns: minmax(140px, 0.34fr) 1fr;
+  padding-top: 0.8rem;
+}
+
+.detail-row dt {
+  color: var(--soft-ink);
+  font-weight: 900;
+}
+
+.detail-row dd {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.screensaver {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(190, 22, 34, 0.32), transparent 34%),
+    linear-gradient(135deg, #000 0%, #210407 42%, #be1622 100%);
+  color: var(--paper);
+  inset: 0;
+  padding: clamp(1rem, 4vw, 4rem);
+  position: fixed;
+  z-index: 50;
+}
+
+.screensaver-content {
+  align-items: center;
+  display: grid;
+  min-height: 100%;
+}
+
+.screensaver-card {
+  animation: screensaverFade 700ms ease both;
+  display: grid;
+  gap: clamp(1.2rem, 3vw, 2.5rem);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  margin: 0 auto;
+  max-width: 1380px;
+  width: 100%;
+}
+
+.screensaver-image {
+  align-self: center;
+  border-radius: var(--radius);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.34);
+  max-height: 74vh;
+  max-width: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.screensaver-card.no-image {
+  grid-template-columns: 1fr;
+  max-width: 980px;
+}
+
+.honor-card {
+  animation: honorFade 900ms ease both;
+  align-items: center;
+  display: grid;
+  gap: clamp(1.4rem, 4vw, 4rem);
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.42fr);
+  margin: 0 auto;
+  max-width: 1540px;
+  min-height: 82vh;
+  width: 100%;
+}
+
+.honor-card.no-image {
+  grid-template-columns: 1fr;
+  max-width: 1160px;
+  text-align: center;
+}
+
+.honor-content {
+  color: var(--paper);
+  text-shadow: 0 16px 42px rgba(0, 0, 0, 0.32);
+}
+
+.honor-label {
+  font-size: clamp(0.95rem, 1.4vw, 1.45rem);
+  font-weight: 900;
+  margin: 0 0 1.25rem;
+  text-transform: uppercase;
+}
+
+.honor-title {
+  color: var(--paper);
+  font-size: clamp(4rem, 11vw, 12rem);
+  line-height: 0.88;
+  margin: 0;
+}
+
+.honor-thanks {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: var(--radius);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+  color: #631016;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.25rem, 2.4vw, 2.35rem);
+  font-style: italic;
+  line-height: 1.35;
+  margin: clamp(1.4rem, 3vw, 2.8rem) 0 0;
+  padding: clamp(1.1rem, 2.6vw, 2rem);
+}
+
+.honor-meta {
+  color: var(--paper);
+  font-size: clamp(1.05rem, 1.8vw, 1.75rem);
+  font-weight: 800;
+  margin: 1.3rem 0 0;
+}
+
+.honor-image {
+  border: 6px solid rgba(255, 255, 255, 0.82);
+  border-radius: var(--radius);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.38);
+  max-height: 72vh;
+  max-width: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.screensaver-info {
+  align-self: center;
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: var(--radius);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.34);
+  color: var(--ink);
+  padding: clamp(1.4rem, 3vw, 3rem);
+}
+
+.screensaver-title {
+  color: var(--museum-red);
+  font-size: clamp(2.3rem, 6vw, 6.8rem);
+  line-height: 0.96;
+  margin: 0 0 1.2rem;
+}
+
+.screensaver-thanks {
+  background: rgba(190, 22, 34, 0.07);
+  border: 1px solid rgba(190, 22, 34, 0.18);
+  border-radius: var(--radius);
+  color: #631016;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.15rem, 2vw, 1.8rem);
+  font-style: italic;
+  line-height: 1.45;
+  margin: 0 0 1.4rem;
+  padding: clamp(1rem, 2vw, 1.6rem);
+}
+
+.screensaver-list {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+}
+
+.screensaver-row {
+  border-top: 1px solid rgba(0, 0, 0, 0.14);
+  display: grid;
+  gap: 0.35rem;
+  grid-template-columns: minmax(120px, 0.32fr) 1fr;
+  padding-top: 0.7rem;
+}
+
+.screensaver-row dt {
+  color: var(--soft-ink);
+  font-weight: 900;
+}
+
+.screensaver-row dd {
+  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  font-weight: 800;
+  margin: 0;
+}
+
+@keyframes screensaverFade {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes honorFade {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 1100px) {
+  .specific-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .reset-button {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 680px) {
+  .app-shell {
+    padding: 1rem;
+  }
+
+  .page-header {
+    flex-direction: column;
+    gap: 1.35rem;
+    justify-content: center;
+  }
+
+  .museum-logo {
+    max-width: 148px;
+  }
+
+  .specific-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .status-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  #sourceStatus {
+    text-align: left;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .donor-card {
+    min-height: 112px;
+  }
+
+  .detail-row {
+    grid-template-columns: 1fr;
+  }
+
+  .screensaver-card {
+    grid-template-columns: 1fr;
+  }
+
+  .screensaver-image {
+    max-height: 34vh;
+  }
+
+  .screensaver-row {
+    grid-template-columns: 1fr;
+  }
+
+  .honor-card {
+    grid-template-columns: 1fr;
+    min-height: 100%;
+    text-align: center;
+  }
+
+  .honor-image {
+    justify-self: center;
+    max-height: 32vh;
+    max-width: 84%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}

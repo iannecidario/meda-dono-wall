@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Albo dei donatori del Museo MEdA di Aquilonia"
+    />
+    <title>Albo dei Donatori - Museo MEdA di Aquilonia</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#results">Vai ai risultati</a>
+
+    <main class="app-shell">
+      <header class="page-header" aria-labelledby="page-title">
+        <img
+          class="museum-logo"
+          src="./assets/meda-logo.png"
+          alt="Logo Museo Etnografico di Aquilonia MEdA"
+        />
+        <div class="header-title-group">
+          <h1 id="page-title">ALBO DEI DONATORI</h1>
+          <p id="titleCounter" class="title-counter" aria-live="polite"></p>
+        </div>
+        <button
+          id="settingsButton"
+          class="settings-button"
+          type="button"
+          aria-label="Impostazioni salvaschermo"
+          aria-expanded="false"
+          aria-controls="settingsPanel"
+        >
+          ⚙
+        </button>
+      </header>
+
+      <aside id="settingsPanel" class="settings-panel" hidden>
+        <div class="settings-panel-inner">
+          <div class="settings-panel-header">
+            <h2>Salvaschermo</h2>
+            <button
+              id="closeSettings"
+              class="settings-close"
+              type="button"
+              aria-label="Chiudi impostazioni"
+            >
+              ×
+            </button>
+          </div>
+
+          <label class="settings-toggle" for="screensaverEnabled">
+            <span>Attivazione salvaschermo</span>
+            <input id="screensaverEnabled" type="checkbox" />
+          </label>
+
+          <label class="settings-field" for="screensaverMode">
+            <span>Modalità salvaschermo</span>
+            <select id="screensaverMode">
+              <option value="detail">Scheda dettagliata</option>
+              <option value="honor">Galleria d'Onore</option>
+            </select>
+          </label>
+
+          <label class="settings-field" for="screensaverIdle">
+            <span>Tempo di inattività</span>
+            <select id="screensaverIdle">
+              <option value="30000">30 secondi</option>
+              <option value="60000">60 secondi</option>
+              <option value="120000">120 secondi</option>
+            </select>
+          </label>
+
+          <label class="settings-field" for="screensaverSlide">
+            <span>Durata scheda</span>
+            <select id="screensaverSlide">
+              <option value="5000">5 secondi</option>
+              <option value="10000">10 secondi</option>
+              <option value="15000">15 secondi</option>
+            </select>
+          </label>
+        </div>
+      </aside>
+
+      <section class="filters-panel" aria-label="Filtri donatori">
+        <div class="search-row">
+          <label class="field field-wide" for="globalSearch">
+            <span>Ricerca libera</span>
+            <input
+              id="globalSearch"
+              type="search"
+              placeholder="Cerca un donatore..."
+              autocomplete="off"
+            />
+          </label>
+        </div>
+
+        <div class="alphabet-wrap" aria-label="Filtro alfabetico per cognome">
+          <button class="letter-button is-active" type="button" data-letter="">
+            Tutte
+          </button>
+          <div id="alphabetBar" class="alphabet-bar"></div>
+        </div>
+
+        <div class="specific-filters">
+          <label class="field" for="nameFilter">
+            <span>Nome</span>
+            <input id="nameFilter" type="text" autocomplete="off" />
+          </label>
+
+          <label class="field" for="nicknameFilter">
+            <span>Soprannome</span>
+            <input id="nicknameFilter" type="text" autocomplete="off" />
+          </label>
+
+          <label class="field" for="cityFilter">
+            <span>Città</span>
+            <input id="cityFilter" type="text" autocomplete="off" />
+          </label>
+
+          <label class="field" for="categoryFilter">
+            <span>Categoria</span>
+            <select id="categoryFilter">
+              <option value="">Tutte</option>
+            </select>
+          </label>
+
+          <button id="resetButton" class="reset-button" type="button">
+            AZZERA FILTRI
+          </button>
+        </div>
+      </section>
+
+      <section class="status-row" aria-live="polite" aria-atomic="true">
+        <p id="resultCount">Caricamento donatori...</p>
+        <p id="sourceStatus"></p>
+      </section>
+
+      <section id="results" class="results-grid" aria-label="Elenco donatori">
+      </section>
+    </main>
+
+    <dialog id="detailDialog" class="detail-dialog" aria-labelledby="detailTitle">
+      <div class="detail-shell">
+        <button id="closeDetail" class="close-button" type="button" aria-label="Chiudi">
+          ×
+        </button>
+        <div id="detailContent"></div>
+      </div>
+    </dialog>
+
+    <template id="cardTemplate">
+      <button class="donor-card" type="button">
+        <span class="donor-name"></span>
+        <span class="donor-nickname"></span>
+      </button>
+    </template>
+
+    <section
+      id="screensaver"
+      class="screensaver"
+      aria-live="polite"
+      aria-label="Salvaschermo museale"
+      hidden
+    >
+      <div id="screensaverContent" class="screensaver-content"></div>
+    </section>
+
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
